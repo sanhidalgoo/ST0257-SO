@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #define NUM_REQUESTS 10
-#define DISK_SIZE 199
+#define DISK_SIZE 4099
 
 typedef struct
 {
@@ -17,9 +17,10 @@ typedef struct
   int waitingTime;
   // lastTime
   int lastTime;
-  // Is Processed?
+  // IsProcessed?
   int processed;
 } ProcessStruct;
+
 int turnaroundTime = 0, totalTurnaroundTime = 0, waitingTime = 0, totalWaitingTime = 0;
 
 ProcessStruct *processes;
@@ -167,11 +168,6 @@ int main(int argc, char const *argv[])
     case 5:
       fcfsDisk(headPointer, listA);
       sstf(headPointer, listB);
-      for (int i = 0; i < NUM_REQUESTS; i++)
-      {
-        printf("%d ", listA[i]);
-      }
-      
       scan(headPointer, listA);
       cscan(headPointer, listA);
       break;
@@ -193,7 +189,7 @@ void fcfsDisk(int headPointer, int list[])
   printf("The movements carried out are: \n");
 
   int amountOfMovements = abs(headPointer - list[0]);
-  printf("%d -> %d -> ", headPointer, amountOfMovements);
+  printf("%d ->", headPointer);
   for (int i = 0; i < NUM_REQUESTS - 1; i++)
   {
     printf("%d -> ", list[i]);
